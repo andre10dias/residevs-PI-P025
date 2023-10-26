@@ -1,24 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
-#include "Usuario.h"
-#include "DataHora.h"
-
-using namespace std;
-
-class Tweet
-{
-    private:
-        Usuario autor;
-        string conteudo;
-        string data_criacao;
-
-    public:
-        Tweet(/* args */);
-        Tweet(Usuario _autor, string _conteudo);
-        ~Tweet();
-};
+#include "Tweet.h"
 
 Tweet::Tweet(/* args */)
 {
@@ -34,3 +14,24 @@ Tweet::Tweet(Usuario _autor, string _conteudo)
 Tweet::~Tweet()
 {
 }
+
+Usuario Tweet::getAutor() {
+    return autor;
+}
+
+void Tweet::setAutor(Usuario _autor) {
+    autor = _autor;
+}
+
+string Tweet::getConteudo() {
+    return conteudo;
+}
+
+void Tweet::setConteudo(string _conteudo) {
+    conteudo = _conteudo;
+}
+
+string Tweet::getData_criacao() {
+    return data_criacao;
+}
+

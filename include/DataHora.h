@@ -1,3 +1,6 @@
+#ifndef DH_H
+#define DH_H
+
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -14,3 +17,5 @@ class DataHora
 
         static string dataHoraAtual();
 };
+
+#endif

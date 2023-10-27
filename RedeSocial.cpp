@@ -8,12 +8,21 @@ RedeSocial::~RedeSocial()
 {
 }
 
-vector<Usuario> RedeSocial::getUsuarios() {
-    return listar_usuarios();
+Usuario RedeSocial::retorna_usuario_logado() 
+{
+    return usuarioLogado;
 }
 
-vector<Tweet> RedeSocial::getTweets() {
-    return listar_tweets();
+void RedeSocial::atualiza_usuario_logado(Usuario _usuarioLogado) 
+{
+    usuarioLogado = _usuarioLogado;
+}
+
+vector<Usuario> RedeSocial::retorna_seguindo() 
+{
+    string nomeUsuarioLogado = usuarioLogado.getNome_usuario();
+    string nomeArquivo = nomeUsuarioLogado + "_" + Usuario::NOME_ARQUIVO;
+    return retorna_usuarios(nomeArquivo);
 }
 
 void RedeSocial::registrar_usuario(string nome_usuario, string nome)
@@ -23,6 +32,33 @@ void RedeSocial::registrar_usuario(string nome_usuario, string nome)
     string dado = "";
 
     dado += nome_usuario + "," + nome;
+    dados.push_back(dado);
+
+    BancoDeDados::salvarDados(dados, nomeArquivo);
+}
+
+void RedeSocial::registrar_tweet(Tweet t)
+{
+    string nomeArquivo = Tweet::NOME_ARQUIVO;
+    vector<string> dados = BancoDeDados::recuperarDados(nomeArquivo);
+    string dado = "";
+
+    dado += t.getAutor().getNome_usuario() + "," + t.getAutor().getNome() + "," 
+        + t.getConteudo() + "," + t.getData_criacao();
+
+    dados.push_back(dado);
+    
+    BancoDeDados::salvarDados(dados, nomeArquivo);
+}
+
+void RedeSocial::registrar_seguindo(Usuario u)
+{
+    string nomeUsuarioLogado = usuarioLogado.getNome_usuario();
+    string nomeArquivo = nomeUsuarioLogado + "_" + Usuario::NOME_ARQUIVO;
+    vector<string> dados = BancoDeDados::recuperarDados(nomeArquivo);
+    string dado = "";
+
+    dado += u.getNome() + "," + u.getNome_usuario();
     dados.push_back(dado);
 
     BancoDeDados::salvarDados(dados, nomeArquivo);
@@ -45,28 +81,11 @@ Usuario RedeSocial::buscar_usuario(string nome_usuario)
 }
 
 vector<Usuario> RedeSocial::listar_usuarios() {
-    vector<string> dados = BancoDeDados::recuperarDados(Usuario::NOME_ARQUIVO);
-    vector<string> linhas;
-    vector<string> campos;
-    vector<Usuario> usuarios;
-
-    const int NOME_USUARIO = 0;
-    const int NOME = 1;
-
-    linhas = BancoDeDados::retornarLinha(dados);
-    for (string linha : linhas)
-    {
-        campos = BancoDeDados::retornarCampos(linha);
-
-        Usuario usuario(campos[NOME_USUARIO], campos[NOME]);
-        usuarios.push_back(usuario);
-    }
-
-    return usuarios;
+    return retorna_usuarios(Usuario::NOME_ARQUIVO);
 }
 
 vector<Tweet> RedeSocial::listar_tweets() {
-    vector<string> dados = BancoDeDados::recuperarDados(Usuario::NOME_ARQUIVO);
+    vector<string> dados = BancoDeDados::recuperarDados(Tweet::NOME_ARQUIVO);
     vector<string> linhas;
     vector<string> campos;
     vector<Tweet> tweets;
@@ -88,4 +107,26 @@ vector<Tweet> RedeSocial::listar_tweets() {
     }
 
     return tweets;
+}
+
+vector<Usuario> RedeSocial::retorna_usuarios(string nomeArquivo)
+{
+    vector<string> dados = BancoDeDados::recuperarDados(nomeArquivo);
+    vector<string> linhas;
+    vector<string> campos;
+    vector<Usuario> usuarios;
+
+    const int NOME_USUARIO = 0;
+    const int NOME = 1;
+
+    linhas = BancoDeDados::retornarLinha(dados);
+    for (string linha : linhas)
+    {
+        campos = BancoDeDados::retornarCampos(linha);
+
+        Usuario usuario(campos[NOME_USUARIO], campos[NOME]);
+        usuarios.push_back(usuario);
+    }
+
+    return usuarios;
 }

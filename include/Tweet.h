@@ -1,8 +1,9 @@
-#include <iostream>
-#include <string>
+#ifndef TWEET_H
+#define TWEET_H
+
 #include <vector>
 
-#include "Usuario.h"
+#include "RedeSocial.h"
 #include "DataHora.h"
 
 using namespace std;
@@ -27,4 +28,8 @@ class Tweet
         string getConteudo();
         void setConteudo(string _conteudo);
         string getData_criacao();
+
+        static vector<Tweet> retornaTweetsPorAutor(Usuario autor);
 };
+
+#endif

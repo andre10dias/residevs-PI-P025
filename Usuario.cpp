@@ -1,4 +1,5 @@
 #include "Usuario.h"
+#include "Tweet.h"
 
 static string NOME_ARQUIVO = "usuario.txt";
 
@@ -36,14 +37,39 @@ vector<Usuario> Usuario::getSeguidores() {
 }
 
 void Usuario::setSeguidores(vector<Usuario> _seguidores) {
-    vector<Usuario> seguidores = _seguidores;
+    seguidores = _seguidores;
 }
 
 vector<Usuario> Usuario::getSeguindo() {
-    return seguindo;
+    return RedeSocial::retorna_seguindo();
 }
 
 void Usuario::setSeguindo(vector<Usuario> _seguindo) {
     seguindo = _seguindo;
 }
 
+void Usuario::postar_tweet(Tweet t) {
+    RedeSocial::registrar_tweet(t);
+}
+
+void Usuario::seguir(Usuario u) {
+    RedeSocial::registrar_seguindo(u);
+}
+
+vector<Tweet> Usuario::receber_feed() {
+    vector<Usuario> seguindo = RedeSocial::retorna_usuario_logado().getSeguindo();
+    vector<Tweet> tweetsSeguindo;
+    vector<Tweet> tweetsTodosSeguindo;
+
+    for (Usuario usuario : seguindo)
+    {
+        tweetsSeguindo = Tweet::retornaTweetsPorAutor(usuario);
+
+        for (Tweet tweet : tweetsSeguindo)
+        {
+            tweetsTodosSeguindo.push_back(tweet);
+        }
+    }
+    
+    return tweetsTodosSeguindo;
+}

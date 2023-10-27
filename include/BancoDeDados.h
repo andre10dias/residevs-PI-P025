@@ -1,3 +1,6 @@
+#ifndef BD_H
+#define BD_H
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -21,3 +24,5 @@ class BancoDeDados
         static vector<string> retornarLinha(vector<string> listaDados);
         static vector<string> retornarCampos(string linha);
 };
+
+#endif

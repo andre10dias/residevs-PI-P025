@@ -44,3 +44,17 @@ string Tweet::getData_criacao() {
     return data_criacao;
 }
 
+vector<Tweet> Tweet::retornaTweetsPorAutor(Usuario autor) {
+    vector<Tweet> tweets = RedeSocial::listar_tweets();
+    vector<Tweet> tweetsDoAutor;
+
+    for (Tweet tweet : tweets)
+    {
+        if (tweet.getAutor().getNome_usuario().compare(autor.getNome_usuario()) == 0)
+        {
+            tweetsDoAutor.push_back(tweet);
+        }
+    }
+
+    return tweetsDoAutor;
+}

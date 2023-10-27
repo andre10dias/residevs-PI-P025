@@ -1,6 +1,9 @@
-#include <iostream>
+#ifndef USER_H
+#define USER_H
+
 #include <string>
-#include <vector>
+
+#include "RedeSocial.h"
 
 using namespace std;
 
@@ -27,4 +30,10 @@ class Usuario
         void setSeguidores(vector<Usuario> _seguidores);
         vector<Usuario> getSeguindo();
         void setSeguindo(vector<Usuario> _seguindo);
+
+        void postar_tweet(Tweet t);
+        void seguir(Usuario u);
+        vector<Tweet> receber_feed();
 };
+
+#endif

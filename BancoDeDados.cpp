@@ -21,7 +21,8 @@ void BancoDeDados::salvarDados(vector<string> listaDados, string nomeArquivo) {
     }
 }
 
-vector<string> BancoDeDados::recuperarDados(vector<string> listaDados, string nomeArquivo) {
+vector<string> BancoDeDados::recuperarDados(string nomeArquivo) {
+    vector<string> listaDados;
     ifstream entrada;
 
     entrada.open(nomeArquivo, ios_base::in);

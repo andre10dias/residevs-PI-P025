@@ -13,6 +13,8 @@ class Usuario
         vector<Usuario> seguindo;
 
     public:
+        static string NOME_ARQUIVO;
+        
         Usuario(/* args */);
         Usuario(string _nome, string _nome_usuario);
         ~Usuario();

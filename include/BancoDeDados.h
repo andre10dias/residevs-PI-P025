@@ -16,7 +16,7 @@ class BancoDeDados
         ~BancoDeDados();
 
         static void salvarDados(vector<string> listaDados, string nomeArquivo);
-        static vector<string> recuperarDados(vector<string> listaDados, string nomeArquivo);
+        static vector<string> recuperarDados(string nomeArquivo);
         static vector<string> tratarDados(vector<string> listaDados);
         static vector<string> retornarLinha(vector<string> listaDados);
         static vector<string> retornarCampos(string linha);

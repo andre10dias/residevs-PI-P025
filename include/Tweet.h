@@ -15,8 +15,11 @@ class Tweet
         string data_criacao;
 
     public:
+        static string NOME_ARQUIVO;
+        
         Tweet(/* args */);
         Tweet(Usuario _autor, string _conteudo);
+        Tweet(Usuario _autor, string _conteudo, string _data_criacao);
         ~Tweet();
 
         Usuario getAutor();

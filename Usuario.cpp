@@ -1,5 +1,7 @@
 #include "Usuario.h"
 
+static string NOME_ARQUIVO = "usuario.txt";
+
 Usuario::Usuario(/* args */)
 {
 }

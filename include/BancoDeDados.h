@@ -1,5 +1,5 @@
-#ifndef BD_H
-#define BD_H
+#ifndef BANCODEDADOS_H
+#define BANCODEDADOS_H
 
 #include <iostream>
 #include <iomanip>

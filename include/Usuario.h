@@ -1,9 +1,8 @@
-#ifndef USER_H
-#define USER_H
-
-#include <string>
+#ifndef USUARIO_H
+#define USUARIO_H
 
 #include "RedeSocial.h"
+#include "Tweet.h"
 
 using namespace std;
 

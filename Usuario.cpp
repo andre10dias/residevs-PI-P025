@@ -1,5 +1,4 @@
-#include "Usuario.h"
-#include "Tweet.h"
+#include "include/Usuario.h"
 
 static string NOME_ARQUIVO = "usuario.txt";
 

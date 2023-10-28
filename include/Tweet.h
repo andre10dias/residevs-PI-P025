@@ -5,6 +5,7 @@
 
 #include "RedeSocial.h"
 #include "DataHora.h"
+#include "Usuario.h"
 
 using namespace std;
 

@@ -1,5 +1,5 @@
-#ifndef DH_H
-#define DH_H
+#ifndef DATAHORA_H
+#define DATAHORA_H
 
 #include <iostream>
 #include <string>

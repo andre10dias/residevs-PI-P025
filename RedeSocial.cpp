@@ -1,4 +1,4 @@
-#include "RedeSocial.h"
+#include "include/RedeSocial.h"
 
 RedeSocial::RedeSocial(/* args */)
 {
@@ -6,6 +6,18 @@ RedeSocial::RedeSocial(/* args */)
 
 RedeSocial::~RedeSocial()
 {
+}
+
+bool RedeSocial::logar(string nomeUsuario) 
+{
+    Usuario usuario = buscar_usuario(nomeUsuario);
+    if (usuario.getNome_usuario() != "")
+    {
+        usuarioLogado = usuario;
+        return true;
+    }
+    
+    return false;
 }
 
 Usuario RedeSocial::retorna_usuario_logado() 

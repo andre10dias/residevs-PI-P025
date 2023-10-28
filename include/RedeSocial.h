@@ -1,5 +1,5 @@
-#ifndef REDE_H
-#define REDE_H
+#ifndef REDESOCIAL_H
+#define REDESOCIAL_H
 
 #include <iostream>
 #include <string>
@@ -24,6 +24,7 @@ class RedeSocial
         RedeSocial(/* args */);
         ~RedeSocial();
 
+        static bool logar(string nomeUsuario);
         static Usuario retorna_usuario_logado();
         static void atualiza_usuario_logado(Usuario _usuarioLogado);
         static vector<Usuario> retorna_seguindo();
